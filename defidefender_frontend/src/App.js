@@ -6,7 +6,7 @@ import { AllRequestsContent, YourRequestsContent, PushRequestContent, PushRespon
 import { YourResponsesContent, ReceivedResponsesContent } from './_pages/response'
 import { RecordsContent } from './_pages/records'
 import { NotificationsContent } from './_pages/notifications'
-
+import { UserInfo } from './_pages/government'
 
 class App extends Component {
   render() {
@@ -15,15 +15,7 @@ class App extends Component {
         <Layout>
           <Switch>
             <Route path="/home" component={HomeContent}></Route>
-            <Route path="/requests/allRequests" component={AllRequestsContent}></Route>
-            <Route path="/requests/yourRequests" component={YourRequestsContent}></Route>
-            <Route path="/requests/pushRequest" component={PushRequestContent}></Route>
-            <Route path="/requests/pushResponse" component={PushResponseContent}></Route>
-            <Route path="/responses/yourResponses" component={YourResponsesContent}></Route>
-            <Route path="/responses/receivedResponses" component={ReceivedResponsesContent}></Route>
-            <Route path="/records" component={RecordsContent}></Route>
-            <Route path="/notifications" component={NotificationsContent}></Route>
-            <Route path="/profile" component={HomeContent}></Route>
+            <Route path="/userInfo" component={UserInfo}></Route>
           </Switch >
         </Layout>
       </BrowserRouter >

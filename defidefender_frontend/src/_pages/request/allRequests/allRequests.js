@@ -58,7 +58,6 @@ const rows = [
 
 export function AllRequestsContent(props) {
     const classes = useStyles()
-
     return (
         <Container maxWidth="lg" className={classes.container}>
             <Paper className={classes.root}>

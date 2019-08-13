@@ -24,9 +24,9 @@ import { HomeContent } from '../homeContent';
 function MadeWithLove() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
-            {'Built by the '}
+            {'All Rights Reserved by '}
             <Link color="inherit" href="https://material-ui.com/">
-                BEP
+                UltraGeeks
       </Link>
             {' team.'}
         </Typography>
@@ -117,11 +117,11 @@ const useStyles = makeStyles(theme => ({
     },
 }))
 
-
 const LayoutWithRouter = withRouter(function Layout(props) {
     const classes = useStyles()
     const [open, setOpen] = React.useState(true)
     const { children, location: { pathname } } = props
+
     const handleDrawerOpen = () => {
         setOpen(true)
     }
@@ -145,7 +145,7 @@ const LayoutWithRouter = withRouter(function Layout(props) {
                         <MenuIcon />
                     </IconButton>
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-                        Blob Exchange Platform
+                        DeFiDefender Project
                     </Typography>
                     <IconButton color="inherit">
                         <Badge badgeContent={4} color="secondary">
@@ -174,50 +174,59 @@ const LayoutWithRouter = withRouter(function Layout(props) {
                         <ListItemIcon>
                             <HomeIcon></HomeIcon>
                         </ListItemIcon>
-                        Home
+                        主页
                     </MenuItem>
                     <MenuItem>
-                        Requests
+                        政府
                     </MenuItem>
                     <MenuList>
-                        <MenuItem className={classes.nested} component={Link} to="/requests/allRequests" selected={'/requests/allRequests' === pathname}>
-                            All Requests
+                        <MenuItem className={classes.nested} component={Link} to="/userInfo" selected={'/userInfo'===pathname}>
+                            查看所有用户信息
                         </MenuItem>
-                        <MenuItem className={classes.nested} component={Link} to="/requests/yourRequests" selected={'/requests/yourRequests' === pathname}>
-                            Your Requests
+                        <MenuItem className={classes.nested} component={Link}>
+                            <NotificationsIcon />
+                            审核用户注册
+                        </MenuItem>
+                        <MenuItem className={classes.nested} component={Link}>
+                            <NotificationsIcon />
+                            凭证生成与签名
                         </MenuItem>
                     </MenuList>
                     <MenuItem>
-                        Responses
+                        机构
                     </MenuItem>
                     <MenuList>
                         <MenuItem className={classes.nested} component={Link} to="/responses/yourResponses" selected={'/responses/yourResponses' === pathname}>
-                            Your Responses
+                            <NotificationsIcon />
+                            显示个人借贷请求
                         </MenuItem>
                         <MenuItem className={classes.nested} component={Link} to="/responses/receivedResponses" selected={'/responses/receivedResponses' === pathname}>
-                            Received Responses
+                            查看黑名单
                         </MenuItem>
                     </MenuList>
                     <MenuItem component={Link} to="/records" selected={'/records' === pathname}>
-                        Records
+                        用户
                     </MenuItem>
-                    <MenuItem component={Link} to="/notifications" selected={'/notifications' === pathname}>
-                        <ListItemIcon>
-                            <NotificationsIcon />
-                        </ListItemIcon>
-                        Notifications
-                    </MenuItem>
-                    <MenuItem component={Link} to="/profile" selected={'/profile' === pathname}>
-                        <ListItemIcon>
-                            <PeopleIcon></PeopleIcon>
-                        </ListItemIcon>
-                        Profile
-                    </MenuItem>
+                    <MenuList>
+                        <MenuItem className={classes.nested}>
+                            注册DID
+                        </MenuItem>
+                        <MenuItem className={classes.nested}>
+                            发起借贷请求
+                        </MenuItem>
+                        <MenuItem className={classes.nested}>
+                            查看凭证
+                        </MenuItem>
+                        <MenuItem className={classes.nested}>
+                            生成凭证
+                        </MenuItem>
+                    </MenuList>
                 </MenuList>
             </Drawer>
+
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
-                {children}
+                { children }
                 <MadeWithLove />
             </main>
         </div>
