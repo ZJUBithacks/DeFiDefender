@@ -35,13 +35,51 @@ const useStyles = theme => ({
     },
 });
 
-// 个人贷款信息列表
+// 个人借贷请求列表
 class LoanRequestInfoList extends Component {
+    // ipfs_hash可直接跳转到IPFS上显示
+    createData(weid, ipfs_hash, amount, expired_date, in_blacklist) {
+        return { weid, ipfs_hash, amount, expired_date, in_blacklist }
+    }
     render() {
+        const rows = [
+            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`, `1000`, '1995-07-01', `yes`),
+            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`, `2000`, '1993-07-01', `yes`),
+            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`, `10000`, '1995-07-01', `no`),
+            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`, `4000`, '1993-01-13', `yes`),
+            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`, `8000`, '1993-07-01', `no`)
+        ]
         const { classes } = this.props
+
         return (
             <div>
-                <h3 className={classes.title}>个人贷款信息列表</h3>
+                <h3 className={classes.title}>个人借贷请求列表</h3>
+                <Container maxWidth="lg" className={classes.container}>
+                    <Paper className={classes.root}>
+                        <Table className={classes.table}>
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell align="center">WeID</TableCell>
+                                    <TableCell align="center">IPFS Hash</TableCell>
+                                    <TableCell align="center">借款金额</TableCell>
+                                    <TableCell align="center">到期时间</TableCell>
+                                    <TableCell align="center">违约</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {rows.map(row => (
+                                    <TableRow >
+                                        <TableCell align="center">{row.weid}</TableCell>
+                                        <TableCell align="center">{row.ipfs_hash} </TableCell>
+                                        <TableCell align="center">{row.amount} </TableCell>
+                                        <TableCell align="center">{row.expired_date}</TableCell>
+                                        <TableCell align="center">{row.in_blacklist}</TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </Paper>
+                </Container>
             </div>
         )
     }
