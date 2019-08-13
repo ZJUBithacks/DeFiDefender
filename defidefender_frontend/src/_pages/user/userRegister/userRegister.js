@@ -10,6 +10,7 @@ import Paper from '@material-ui/core/Paper'
 import { Button } from '@material-ui/core'
 import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 import { Link } from 'react-router-dom'
+import { SignUp } from '../../signup'
 
 const useStyles = theme => ({
     title: {
@@ -42,6 +43,7 @@ class UserRegister extends Component {
         return (
             <div>
                 <h3 className={classes.title}>用户注册DID</h3>
+                <SignUp />
             </div>
         )
     }

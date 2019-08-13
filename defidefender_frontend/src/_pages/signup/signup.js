@@ -125,12 +125,12 @@ export function SignUp() {
             color="primary"
             className={classes.submit}
           >
-            Sign Up
+            注册
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
               <Link href="#" variant="body2">
-                Already have an account? Sign in
+                已经有账号? 登录
               </Link>
             </Grid>
           </Grid>
