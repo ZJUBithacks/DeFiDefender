@@ -35,7 +35,8 @@ const useStyles = theme => ({
     },
 });
 
-class Credential extends Component {
+// 审核用户注册DID申请，只有政府可以调用DID接口完成用户注册申请
+class ListCredential extends Component {
     render() {
         return (
             <div>
@@ -45,6 +46,6 @@ class Credential extends Component {
     }
 }
 
-const CredentialWithStyles = withStyles(useStyles)(Credential)
+const ListCredentialWithStyles = withStyles(useStyles)(ListCredential)
 
-export { CredentialWithStyles as Credential };
+export { ListCredentialWithStyles as ListCredential };

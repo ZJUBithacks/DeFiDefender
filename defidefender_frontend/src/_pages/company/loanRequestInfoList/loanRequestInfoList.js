@@ -35,7 +35,7 @@ const useStyles = theme => ({
     },
 });
 
-class Notifications extends Component {
+class LoanRequestInfoList extends Component {
     render() {
         return (
             <div>
@@ -45,6 +45,6 @@ class Notifications extends Component {
     }
 }
 
-const NotificationsWithStyles = withStyles(useStyles)(Notifications)
+const LoanRequestInfoListWithStyles = withStyles(useStyles)(LoanRequestInfoList)
 
-export { NotificationsWithStyles as Notifications };
+export { LoanRequestInfoListWithStyles as LoanRequestInfoList };

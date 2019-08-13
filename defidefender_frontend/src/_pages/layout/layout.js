@@ -177,38 +177,38 @@ const LayoutWithRouter = withRouter(function Layout(props) {
                         主页
                     </MenuItem>
                     <MenuItem>
-                        政府
+                        <h3>政府</h3>
                     </MenuItem>
                     <MenuList>
                         <MenuItem className={classes.nested} component={Link} to="/userInfo" selected={'/userInfo'===pathname}>
-                            查看所有用户信息
+                            查看用户信息
                         </MenuItem>
-                        <MenuItem className={classes.nested} component={Link}>
+                        <MenuItem className={classes.nested} component={Link} to="/userRegisterDID" selected={'/userRegisterDID' === pathname}>
                             <NotificationsIcon />
-                            审核用户注册
+                            用户注册审核
                         </MenuItem>
-                        <MenuItem className={classes.nested} component={Link}>
+                        <MenuItem className={classes.nested} component={Link} to="/generateCredential" selected={'/generateCredential' === pathname}>
                             <NotificationsIcon />
                             凭证生成与签名
                         </MenuItem>
                     </MenuList>
                     <MenuItem>
-                        机构
+                        <h3>机构</h3>
                     </MenuItem>
                     <MenuList>
-                        <MenuItem className={classes.nested} component={Link} to="/responses/yourResponses" selected={'/responses/yourResponses' === pathname}>
+                        <MenuItem className={classes.nested} component={Link} to="/loanRequest" selected={'/loanRequest' === pathname}>
                             <NotificationsIcon />
                             显示个人借贷请求
                         </MenuItem>
-                        <MenuItem className={classes.nested} component={Link} to="/responses/receivedResponses" selected={'/responses/receivedResponses' === pathname}>
+                        <MenuItem className={classes.nested} component={Link} to="/blacklist" selected={'/blacklist' === pathname}>
                             查看黑名单
                         </MenuItem>
                     </MenuList>
-                    <MenuItem component={Link} to="/records" selected={'/records' === pathname}>
-                        用户
+                    <MenuItem>
+                        <h3>用户</h3>
                     </MenuItem>
                     <MenuList>
-                        <MenuItem className={classes.nested}>
+                        <MenuItem className={classes.nested} component={Link} to="/records" selected={'/records' === pathname}>
                             注册DID
                         </MenuItem>
                         <MenuItem className={classes.nested}>

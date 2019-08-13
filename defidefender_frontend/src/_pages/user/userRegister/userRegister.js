@@ -35,7 +35,8 @@ const useStyles = theme => ({
     },
 });
 
-class Blacklist extends Component {
+// 审核用户注册DID申请，只有政府可以调用DID接口完成用户注册申请
+class UserRegister extends Component {
     render() {
         return (
             <div>
@@ -45,6 +46,6 @@ class Blacklist extends Component {
     }
 }
 
-const LoanWithStyles = withStyles(useStyles)(Loan)
+const UserRegisterWithStyles = withStyles(useStyles)(UserRegister)
 
-export { LoanWithStyles as Loan };
+export { UserRegisterWithStyles as UserRegister };
