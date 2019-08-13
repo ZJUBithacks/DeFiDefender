@@ -36,19 +36,18 @@ const useStyles = theme => ({
     },
 });
 
-// 查看黑名单
-class Blacklist extends Component {
-    
+// 生成并签名凭证
+class GenerateSignCredential extends Component {
     render() {
-        const { classes } = this.props
+        const {classes} = this.props
         return (
             <div>
-                <h3 className={classes.title}>查看黑名单</h3>
+                <h3 className={classes.title}>生成并签名凭证</h3>
             </div>
         )
     }
 }
 
-const BlacklistWithStyles = withStyles(useStyles)(Blacklist)
+const GenerateSignCredentialWithStyles = withStyles(useStyles)(GenerateSignCredential)
 
-export { BlacklistWithStyles as Blacklist };
+export { GenerateSignCredentialWithStyles as GenerateSignCredential };

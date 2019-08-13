@@ -10,7 +10,6 @@ import Paper from '@material-ui/core/Paper'
 import { Button } from '@material-ui/core'
 import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 import { Link } from 'react-router-dom'
-import { mergeClasses } from '@material-ui/styles';
 
 const useStyles = theme => ({
     title: {
@@ -36,19 +35,17 @@ const useStyles = theme => ({
     },
 });
 
-// 查看黑名单
-class Blacklist extends Component {
-    
+class UserRegisterInfoList extends Component {
     render() {
         const { classes } = this.props
         return (
             <div>
-                <h3 className={classes.title}>查看黑名单</h3>
+                <h3 className={classes.title}>用户注册信息列表</h3>
             </div>
         )
     }
 }
 
-const BlacklistWithStyles = withStyles(useStyles)(Blacklist)
+const UserRegisterInfoListWithStyles = withStyles(useStyles)(UserRegisterInfoList)
 
-export { BlacklistWithStyles as Blacklist };
+export { UserRegisterInfoListWithStyles as UserRegisterInfoList };

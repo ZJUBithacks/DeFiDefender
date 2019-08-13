@@ -59,35 +59,21 @@ class UserInfo extends Component {
                         <Table className={classes.table}>
                             <TableHead>
                                 <TableRow>
-                                    <TableCell>姓名</TableCell>
-                                    <TableCell align="right">性别</TableCell>
-                                    <TableCell align="right">生日</TableCell>
-                                    <TableCell align="right">户籍</TableCell>
-                                    <TableCell align="right">身份证</TableCell>
+                                    <TableCell align="center">姓名</TableCell>
+                                    <TableCell align="center">性别</TableCell>
+                                    <TableCell align="center">生日</TableCell>
+                                    <TableCell align="center">户籍</TableCell>
+                                    <TableCell align="center">身份证</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
                                 { rows.map(row => (
-                                    <TableRow key={row.name}>
-                                        <TableCell component="th" scope="row">
-                                            {row.description}
-                                        </TableCell>
-                                        <TableCell align="right">{row.gender}</TableCell>
-                                        <TableCell align="right">{row.birthday}</TableCell>
-                                        <TableCell align="right">{row.address}</TableCell>
-                                        <TableCell align="right">{row.id_image}</TableCell>
-                                        <TableCell align="right">
-                                            {row.status === "Not completed" ? <Button color="primary" component={Link} to="/requests/pushResponse">
-                                                Response
-                                        <CloudUploadIcon className={classes.rightIcon} />
-                                            </Button>
-                                                :
-                                                <Button color="primary" disabled>
-                                                    Response
-                                        <CloudUploadIcon className={classes.rightIcon} />
-                                                </Button>
-                                            }
-                                        </TableCell>
+                                    <TableRow >
+                                        <TableCell align="center">{row.name} </TableCell>
+                                        <TableCell align="center">{row.gender}</TableCell>
+                                        <TableCell align="center">{row.birthday}</TableCell>
+                                        <TableCell align="center">{row.address}</TableCell>
+                                        <TableCell align="center">{row.id_image}</TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>
