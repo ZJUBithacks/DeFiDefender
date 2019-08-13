@@ -118,8 +118,16 @@ const useStyles = makeStyles(theme => ({
 
 const LayoutWithRouter = withRouter(function Layout(props) {
     const classes = useStyles()
-    const [open, setOpen] = React.useState(true)
+    const [open, setOpen] = React.useState(false)
     const { children, location: { pathname } } = props
+
+    const toggleDrawer = (open) => event => {
+        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+          return;
+        }
+    
+        setOpen(open);
+    };
 
     const handleDrawerOpen = () => {
         setOpen(true)
@@ -132,14 +140,13 @@ const LayoutWithRouter = withRouter(function Layout(props) {
     return (
         <div className={classes.root}>
             <CssBaseline />
-            <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
+            <AppBar position="absolute" >
                 <Toolbar className={classes.toolbar}>
                     <IconButton
                         edge="start"
                         color="inherit"
                         aria-label="open drawer"
                         onClick={handleDrawerOpen}
-                        className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
                     >
                         <MenuIcon />
                     </IconButton>
@@ -159,16 +166,12 @@ const LayoutWithRouter = withRouter(function Layout(props) {
                 </Toolbar>
             </AppBar>
             <Drawer
-                variant="permanent"
-                classes={{
-                    paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
-                }}
                 open={open}
+                
             >
-                <div className={classes.toolbarIcon}>
-                </div>
-                <Divider />
-                <MenuList>
+                <MenuList
+                    onMouseLeave={toggleDrawer(false)}
+                >
                     <MenuItem component={Link} to="/home" selected={'/home' === pathname}>
                         <ListItemIcon>
                             <HomeIcon></HomeIcon>
