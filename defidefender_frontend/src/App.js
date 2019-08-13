@@ -25,7 +25,6 @@ class App extends Component {
             <Route path="/loanRequest" component={LoanRequest}></Route>
             <Route path="/listCredential" component={ListCredential}></Route>
             <Route path="/requestCredential" component={RequestCredential}></Route>
-
           </Switch >
         </Layout>
       </BrowserRouter >

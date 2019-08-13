@@ -1,2 +1,7 @@
-.DS_Store
-**/.DS_Store
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/build
+/.idea
+/fisco
+/weid-build-tools
