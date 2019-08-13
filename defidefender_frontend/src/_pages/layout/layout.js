@@ -19,7 +19,6 @@ import NotificationsIcon from '@material-ui/icons/Notifications'
 import PersonIcon from '@material-ui/icons/Person'
 import { ListItemIcon } from '@material-ui/core'
 import { Link, Route, withRouter } from 'react-router-dom'
-import { HomeContent } from '../homeContent';
 
 function MadeWithLove() {
     return (
