@@ -1,2 +1,2 @@
 export * from './userRegisterInfoList'
-export * from './generateSignCredential'
+export * from './listAllCredential'

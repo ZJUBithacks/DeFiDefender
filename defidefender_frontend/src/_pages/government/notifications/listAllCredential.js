@@ -36,13 +36,13 @@ const useStyles = theme => ({
 });
 
 // 列出所有凭证
-class ListCredential extends Component {
+class ListAllCredential extends Component {
     createData(weid, ipfs_hash) {
         return { weid, ipfs_hash }
     }
 
     render() {
-        const {classes} = this.props
+        const { classes } = this.props
         const rows = [
             this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`),
             this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`),
@@ -63,7 +63,7 @@ class ListCredential extends Component {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                { rows.map(row => (
+                                {rows.map(row => (
                                     <TableRow >
                                         <TableCell align="center">{row.weid}</TableCell>
                                         <TableCell align="center">{row.ipfs_hash} </TableCell>
@@ -78,6 +78,6 @@ class ListCredential extends Component {
     }
 }
 
-const ListCredentialWithStyles = withStyles(useStyles)(ListCredential)
+const ListAllCredentialWithStyles = withStyles(useStyles)(ListAllCredential)
 
-export { ListCredentialWithStyles as ListCredential };
+export { ListAllCredentialWithStyles as ListAllCredential };

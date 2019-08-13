@@ -187,9 +187,9 @@ const LayoutWithRouter = withRouter(function Layout(props) {
                             <NotificationsIcon />
                             用户注册审核
                         </MenuItem>
-                        <MenuItem className={classes.nested} component={Link} to="/generateSignCredential" selected={'/generateSignCredential' === pathname}>
+                        <MenuItem className={classes.nested} component={Link} to="/listAllCredential" selected={'/listAllCredential' === pathname}>
                             <NotificationsIcon />
-                            凭证生成与签名
+                            列出所有凭证
                         </MenuItem>
                     </MenuList>
                     <MenuItem>

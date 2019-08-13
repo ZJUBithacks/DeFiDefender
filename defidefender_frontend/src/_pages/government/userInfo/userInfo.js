@@ -37,17 +37,17 @@ const useStyles = theme => ({
 
 class UserInfo extends Component {
 
-    createData(name, gender, birthday, address, id_image) {
-        return { name, gender, birthday, address, id_image }
+    createData(weid, name, gender, birthday, address, id_image) {
+        return { weid, name, gender, birthday, address, id_image }
     }
     
     render() {
         const rows = [
-            this.createData(`高天尧`, '男', '1995-07-01', '杭州', '001'),
-            this.createData(`李其柄`, '男', '1993-07-01', '杭州', '002'),
-            this.createData(`林泽培`, '男', '1995-07-01', '杭州', '003'),
-            this.createData(`王兵`, '男', '1993-01-13', '杭州', '004'),
-            this.createData(`应昊`, '男', '1993-07-01', '杭州', '005')
+            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, `高天尧`, '男', '1995-07-01', '杭州', '001'),
+            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, `李其柄`, '男', '1993-07-01', '杭州', '002'),
+            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, `林泽培`, '男', '1995-07-01', '杭州', '003'),
+            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, `王兵`, '男', '1993-01-13', '杭州', '004'),
+            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, `应昊`, '男', '1993-07-01', '杭州', '005')
         ]
 
         const{ classes } = this.props
@@ -59,6 +59,7 @@ class UserInfo extends Component {
                         <Table className={classes.table}>
                             <TableHead>
                                 <TableRow>
+                                    <TableCell align="center">WeID</TableCell>
                                     <TableCell align="center">姓名</TableCell>
                                     <TableCell align="center">性别</TableCell>
                                     <TableCell align="center">生日</TableCell>
@@ -69,6 +70,7 @@ class UserInfo extends Component {
                             <TableBody>
                                 { rows.map(row => (
                                     <TableRow >
+                                        <TableCell align="center">{row.weid}</TableCell>
                                         <TableCell align="center">{row.name} </TableCell>
                                         <TableCell align="center">{row.gender}</TableCell>
                                         <TableCell align="center">{row.birthday}</TableCell>
@@ -81,6 +83,7 @@ class UserInfo extends Component {
                     </Paper>
                 </Container>
             </div> 
+        
         );
     }
 }

@@ -5,7 +5,7 @@ import { HomeContent } from './_pages/homeContent'
 import { AllRequestsContent, YourRequestsContent, PushRequestContent, PushResponseContent } from './_pages/request'
 import { YourResponsesContent, ReceivedResponsesContent } from './_pages/response'
 import { RecordsContent } from './_pages/records'
-import { UserInfo, GenerateSignCredential, UserRegisterInfoList} from './_pages/government'
+import { UserInfo, ListAllCredential, UserRegisterInfoList} from './_pages/government'
 import { Blacklist, LoanRequestInfoList} from './_pages/company'
 import { UserRegister, LoanRequest, ListCredential, RequestCredential } from './_pages/user'
 class App extends Component {
@@ -18,7 +18,7 @@ class App extends Component {
             {/* 政府 */}
             <Route path="/userInfo" component={UserInfo}></Route>
             <Route path="/userRegisterInfoList" component={UserRegisterInfoList}></Route>
-            <Route path="/generateSignCredential" component={GenerateSignCredential}></Route>
+            <Route path="/listAllCredential" component={ListAllCredential}></Route>
             {/* 机构 */}
             <Route path="/blacklist" component={Blacklist}></Route>
             <Route path="/loanRequestInfoList" component={LoanRequestInfoList}></Route>
