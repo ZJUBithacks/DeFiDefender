@@ -35,12 +35,12 @@ const useStyles = theme => ({
     },
 });
 
-// 审核用户注册DID申请，只有政府可以调用DID接口完成用户注册申请
+// 用户注册DID
 class UserRegister extends Component {
     render() {
         return (
             <div>
-
+                <h3>用户注册DID</h3>
             </div>
         )
     }

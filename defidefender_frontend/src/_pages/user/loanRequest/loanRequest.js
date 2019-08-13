@@ -35,11 +35,12 @@ const useStyles = theme => ({
     },
 });
 
+// 用户请求贷款
 class LoanRequest extends Component {
     render() {
         return (
             <div>
-
+                <h3>用户请求贷款</h3>
             </div>
         )
     }
