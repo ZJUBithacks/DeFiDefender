@@ -12,7 +12,7 @@ import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 import { Link } from 'react-router-dom'
 
 const useStyles = theme => ({
-    userInfo: {
+    title: {
         textAlign: 'center'
     },
     content: {
@@ -37,9 +37,10 @@ const useStyles = theme => ({
 
 class UserRegisterInfoList extends Component {
     render() {
+        const { classes } = this.props
         return (
             <div>
-
+                <h3 className={classes.title}>用户注册信息列表</h3>
             </div>
         )
     }

@@ -10,9 +10,10 @@ import Paper from '@material-ui/core/Paper'
 import { Button } from '@material-ui/core'
 import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 import { Link } from 'react-router-dom'
+import { mergeClasses } from '@material-ui/styles';
 
 const useStyles = theme => ({
-    userInfo: {
+    title: {
         textAlign: 'center'
     },
     content: {
@@ -35,11 +36,14 @@ const useStyles = theme => ({
     },
 });
 
+// 查看黑名单
 class Blacklist extends Component {
+    
     render() {
+        const { classes } = this.props
         return (
             <div>
-                
+                <h3 className={classes.title}>查看黑名单</h3>
             </div>
         )
     }

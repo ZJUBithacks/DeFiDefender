@@ -196,7 +196,7 @@ const LayoutWithRouter = withRouter(function Layout(props) {
                         <h3>机构</h3>
                     </MenuItem>
                     <MenuList>
-                        <MenuItem className={classes.nested} component={Link} to="/loanRequest" selected={'/loanRequest' === pathname}>
+                        <MenuItem className={classes.nested} component={Link} to="/loanRequestInfoList" selected={'/loanRequestInfoList' === pathname}>
                             <NotificationsIcon />
                             显示个人借贷请求
                         </MenuItem>
