@@ -38,9 +38,16 @@ const useStyles = theme => ({
 
 // 查看黑名单
 class Blacklist extends Component {
-    
+    createData(weid, name, gender, birthday, address, id_image) {
+        return { weid, name, gender, birthday, address, id_image }
+    }
     render() {
+        const rows = [
+            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, `张三`, '男', '1995-07-01', '杭州', '001'),
+            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, `李四`, '男', '1993-07-01', '杭州', '002'),
+        ]
         const { classes } = this.props
+
         return (
             <div>
                 <h3 className={classes.title}>查看黑名单</h3>

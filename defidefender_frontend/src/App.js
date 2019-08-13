@@ -4,6 +4,7 @@ import { Layout } from './_pages/layout'
 import { UserInfo, ListAllCredential, UserRegisterInfoList} from './_pages/government'
 import { Blacklist, LoanRequestInfoList} from './_pages/company'
 import { UserRegister, LoanRequest, ListCredential, RequestCredential } from './_pages/user'
+import {HomeContent} from './_pages/homeContent'
 
 class App extends Component {
   render() {
@@ -12,6 +13,7 @@ class App extends Component {
         <Layout>
           <Switch>
             {/* 政府 */}
+            <Route path="/home" component={HomeContent}></Route>
             <Route path="/userInfo" component={UserInfo}></Route>
             <Route path="/userRegisterInfoList" component={UserRegisterInfoList}></Route>
             <Route path="/listAllCredential" component={ListAllCredential}></Route>

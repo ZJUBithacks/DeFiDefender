@@ -179,6 +179,9 @@ const LayoutWithRouter = withRouter(function Layout(props) {
                         <h3>政府</h3>
                     </MenuItem>
                     <MenuList>
+                        <MenuItem className={classes.nested} component={Link} to="/home" selected={'/home' === pathname}>
+                            主页
+                        </MenuItem>
                         <MenuItem className={classes.nested} component={Link} to="/userInfo" selected={'/userInfo'===pathname}>
                             查看用户信息
                         </MenuItem>
