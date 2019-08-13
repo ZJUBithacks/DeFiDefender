@@ -5,6 +5,11 @@
 /.pnp
 .pnp.js
 
+# storage
+.DS_Store
+*/.DS_Store
+**/.DS_Store
+
 # testing
 /coverage
 
