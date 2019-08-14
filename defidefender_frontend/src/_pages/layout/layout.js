@@ -5,8 +5,6 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import Drawer from '@material-ui/core/Drawer'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
-import MenuList from '@material-ui/core/MenuList'
-import MenuItem from '@material-ui/core/MenuItem'
 import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton'
 import Badge from '@material-ui/core/Badge'
@@ -16,6 +14,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications'
 import PersonIcon from '@material-ui/icons/Person'
 import { Link, Route, withRouter } from 'react-router-dom'
 import { List,ListItemIcon, ListItemText,ListItem} from '@material-ui/core'
+
 
 function MadeWithLove() {
     return (
