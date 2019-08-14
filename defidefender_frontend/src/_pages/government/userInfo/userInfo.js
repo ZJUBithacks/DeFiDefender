@@ -43,11 +43,11 @@ class UserInfo extends Component {
     
     render() {
         const rows = [
-            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, `高天尧`, '男', '1995-07-01', '杭州', '001'),
-            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, `李其柄`, '男', '1993-07-01', '杭州', '002'),
-            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, `林泽培`, '男', '1995-07-01', '杭州', '003'),
-            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, `王兵`, '男', '1993-01-13', '杭州', '004'),
-            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, `应昊`, '男', '1993-07-01', '杭州', '005')
+            this.createData(`did:weid:1:0xcb8e785c9370665b4712d611126080cf10a362f1`, `高天尧`, '男', '1995-07-01', '杭州', '001'),
+            this.createData(`did:weid:1:0x703968c09ae967ae052f52c13d58ded42d0efab9`, `李其柄`, '男', '1993-07-01', '杭州', '002'),
+            this.createData(`did:weid:1:0x210d26636c5384b9399a2540f5d8a14ff5ed030d`, `林泽培`, '男', '1995-07-01', '杭州', '003'),
+            this.createData(`did:weid:1:0x8d6f2da910b3d367ac53013f7d7eb40ef71fa3c6`, `王兵`, '男', '1993-01-13', '杭州', '004'),
+            this.createData(`did:weid:1:0x6b7bdb92f9a1a2dec084e35e89a936118e1e18e2`, `应昊`, '男', '1993-07-01', '杭州', '005')
         ]
         const{ classes } = this.props
         return (
