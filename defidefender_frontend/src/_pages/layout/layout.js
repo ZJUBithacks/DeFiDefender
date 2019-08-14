@@ -8,17 +8,14 @@ import Toolbar from '@material-ui/core/Toolbar'
 import MenuList from '@material-ui/core/MenuList'
 import MenuItem from '@material-ui/core/MenuItem'
 import Typography from '@material-ui/core/Typography'
-import Divider from '@material-ui/core/Divider'
 import IconButton from '@material-ui/core/IconButton'
 import Badge from '@material-ui/core/Badge'
-import PeopleIcon from '@material-ui/icons/People'
 import MenuIcon from '@material-ui/icons/Menu'
 import HomeIcon from '@material-ui/icons/Home'
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import NotificationsIcon from '@material-ui/icons/Notifications'
 import PersonIcon from '@material-ui/icons/Person'
-import { ListItemIcon } from '@material-ui/core'
 import { Link, Route, withRouter } from 'react-router-dom'
+import { List,ListItemIcon, ListItemText,ListItem} from '@material-ui/core'
 
 function MadeWithLove() {
     return (
@@ -32,7 +29,7 @@ function MadeWithLove() {
     )
 }
 
-const drawerWidth = 240
+const drawerWidth = 250
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -73,13 +70,7 @@ const useStyles = makeStyles(theme => ({
         flexGrow: 1,
     },
     drawerPaper: {
-        position: 'relative',
-        whiteSpace: 'nowrap',
-        width: drawerWidth,
-        transition: theme.transitions.create('width', {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
+        width: drawerWidth
     },
     drawerPaperClose: {
         overflowX: 'hidden',
@@ -169,64 +160,61 @@ const LayoutWithRouter = withRouter(function Layout(props) {
                 open={open}
                 
             >
-                <MenuList
+                <List
                     onMouseLeave={toggleDrawer(false)}
+                    className={classes.drawerPaper}
+                    role="presentation"
                 >
-                    <MenuItem component={Link} to="/home" selected={'/home' === pathname}>
+                    <ListItem button>
                         <ListItemIcon>
-                            <HomeIcon></HomeIcon>
+                            <HomeIcon/>
                         </ListItemIcon>
-                        主页
-                    </MenuItem>
-                    <MenuItem>
-                        <h3>政府</h3>
-                    </MenuItem>
-                    <MenuList>
-                        <MenuItem className={classes.nested} component={Link} to="/home" selected={'/home' === pathname}>
-                            主页
-                        </MenuItem>
-                        <MenuItem className={classes.nested} component={Link} to="/userInfo" selected={'/userInfo'===pathname}>
-                            查看用户信息
-                        </MenuItem>
-                        <MenuItem className={classes.nested} component={Link} to="/userRegisterInfoList" selected={'/userRegisterInfoList' === pathname}>
-                            <NotificationsIcon />
-                            用户注册审核
-                        </MenuItem>
-                        <MenuItem className={classes.nested} component={Link} to="/listAllCredential" selected={'/listAllCredential' === pathname}>
-                            <NotificationsIcon />
-                            列出所有凭证
-                        </MenuItem>
-                    </MenuList>
-                    <MenuItem>
-                        <h3>机构</h3>
-                    </MenuItem>
-                    <MenuList>
-                        <MenuItem className={classes.nested} component={Link} to="/loanRequestInfoList" selected={'/loanRequestInfoList' === pathname}>
-                            <NotificationsIcon />
-                            显示个人借贷请求
-                        </MenuItem>
-                        <MenuItem className={classes.nested} component={Link} to="/blacklist" selected={'/blacklist' === pathname}>
-                            查看黑名单
-                        </MenuItem>
-                    </MenuList>
-                    <MenuItem>
-                        <h3>用户</h3>
-                    </MenuItem>
-                    <MenuList>
-                        <MenuItem className={classes.nested} component={Link} to="/userRegister" selected={'/userRegister' === pathname}>
-                            注册DID
-                        </MenuItem>
-                        <MenuItem className={classes.nested} component={Link} to="/loanRequest" selected={'/loanRequest' === pathname}>
-                            发起借贷请求
-                        </MenuItem>
-                        <MenuItem className={classes.nested} component={Link} to="/listCredential" selected={'/listCredential' === pathname}>
-                            查看凭证
-                        </MenuItem>
-                        <MenuItem className={classes.nested} component={Link} to="/requestCredential" selected={'/requestCredential' === pathname}>
-                            生成凭证
-                        </MenuItem>
-                    </MenuList>
-                </MenuList>
+                        <ListItemText primary={"政府"} />
+                    </ListItem>
+                    <ListItem   component={Link} to="/home" selected={'/home' === pathname}>
+                        <ListItemText primary={"主页"} />
+                    </ListItem>
+                    <ListItem   component={Link} to="/userInfo" selected={'/userInfo'===pathname}>
+                        <ListItemText primary={"查看用户信息"} />
+                    </ListItem>
+                    <ListItem   component={Link} to="/userRegisterInfoList" selected={'/userRegisterInfoList' === pathname}>
+                        <ListItemText primary={"用户注册审核"} />
+                    </ListItem>
+                    <ListItem   component={Link} to="/listAllCredential" selected={'/listAllCredential' === pathname}>
+                        <ListItemText primary={"列出所有凭证"} />
+                    </ListItem>
+
+                    <ListItem button>
+                        <ListItemIcon>
+                            <HomeIcon/>
+                        </ListItemIcon>
+                        <ListItemText primary={"机构"} />
+                    </ListItem>
+
+                    <ListItem   component={Link} to="/loanRequestInfoList" selected={'/loanRequestInfoList' === pathname}>
+                        <ListItemText primary={"借贷请求列表"} />
+                    </ListItem>
+                    <ListItem button>
+                        <ListItemIcon>
+                            <HomeIcon/>
+                        </ListItemIcon>
+                        <ListItemText primary={"用户"} />
+                    </ListItem>
+                    <ListItem   component={Link} to="/userRegister" selected={'/userRegister' === pathname}>
+                        <ListItemText primary={"注册"} />   
+                    </ListItem>
+                    
+                    <ListItem   component={Link} to="/listCredential" selected={'/listCredential' === pathname}>
+                        <ListItemText primary={"查看凭证"} /> 
+                    </ListItem>
+                    <ListItem   component={Link} to="/requestCredential" selected={'/requestCredential' === pathname}>
+                        <ListItemText primary={"生成凭证"} />
+                    </ListItem>
+                    <ListItem   component={Link} to="/loanRequest" selected={'/loanRequest' === pathname}>
+                        <ListItemText primary={"借贷"} />  
+                    </ListItem>
+
+                </List>
             </Drawer>
 
             <main className={classes.content}>
