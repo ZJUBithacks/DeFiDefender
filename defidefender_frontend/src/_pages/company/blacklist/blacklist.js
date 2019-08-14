@@ -45,16 +45,19 @@ class Blacklist extends Component {
     }
     constructor(props){
         super(props)
-        this.state = store.getState()
-        alert(this.state)
+        // this.state = store.getState().company[0].blacklist
     }
 
     render() {
-        const { ListBlacklist } = this.props
-        const rows = [
-            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, "xx于xx年xx月xx日未还款金额xx元"),
-            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, "xx于xx年xx月xx日未还款金额xx元"),   
-        ]
+        // this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, "xx于xx年xx月xx日未还款金额xx元"),
+        const rows = []
+
+        // alert(this.props.blacklist[0].weid)
+
+        this.props.blacklist.map((item, i) => {
+            rows.push(this.createData(item.weid, item.description))
+        })
+
         const { classes } = this.props
         return (
             <div>

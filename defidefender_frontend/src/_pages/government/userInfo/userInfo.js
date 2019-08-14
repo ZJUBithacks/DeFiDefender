@@ -49,7 +49,6 @@ class UserInfo extends Component {
             this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, `王兵`, '男', '1993-01-13', '杭州', '004'),
             this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, `应昊`, '男', '1993-07-01', '杭州', '005')
         ]
-
         const{ classes } = this.props
         return (
             <div>

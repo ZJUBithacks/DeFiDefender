@@ -50,8 +50,6 @@ const useStyles = makeStyles(theme => ({
     },
 }))
 
-
-
 // 个人借贷请求列表
 function LoanRequestInfoList(props) {
     
@@ -61,7 +59,7 @@ function LoanRequestInfoList(props) {
         setButtonOpen(prev => !prev)
     }
 
-    const oppo = (flag)=>{
+    const oppo = (flag) => {
         console.log("123")
         console.log(flag);
         flag = !flag

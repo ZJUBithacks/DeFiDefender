@@ -15,7 +15,6 @@ import PersonIcon from '@material-ui/icons/Person'
 import { Link, Route, withRouter } from 'react-router-dom'
 import { List,ListItemIcon, ListItemText,ListItem} from '@material-ui/core'
 
-
 function MadeWithLove() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
@@ -191,9 +190,13 @@ const LayoutWithRouter = withRouter(function Layout(props) {
                         <ListItemText primary={"机构"} />
                     </ListItem>
 
-                    <ListItem   component={Link} to="/loanRequestInfoList" selected={'/loanRequestInfoList' === pathname}>
+                    <ListItem component={Link} to="/loanRequestInfoList" selected={'/loanRequestInfoList' === pathname}>
                         <ListItemText primary={"借贷请求列表"} />
                     </ListItem>
+                    <ListItem component={Link} to="/blacklist" selected={'/blacklist' === pathname}>
+                        <ListItemText primary={"黑名单"}/>
+                    </ListItem>
+                
                     <ListItem button>
                         <ListItemIcon>
                             <HomeIcon/>

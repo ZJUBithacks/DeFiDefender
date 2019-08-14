@@ -2,9 +2,12 @@ import React, { Component } from 'react'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { Layout } from './_pages/layout'
 import { UserInfo, ListAllCredential, UserRegisterInfoList} from './_pages/government'
-import { Blacklist, LoanRequestInfoList} from './_pages/company'
+import { LoanRequestInfoList} from './_pages/company'
 import { UserRegister, LoanRequest, ListCredential, RequestCredential } from './_pages/user'
 import {HomeContent} from './_pages/homeContent'
+
+import Blacklist from './_containers/blacklistContainer'
+
 
 class App extends Component {
   render() {

@@ -14,6 +14,9 @@ const initialState = {
                     "weid": "did:weid:1:0xbd88a3e27798a28970a358fa315673d11cc599a3",
                     "description": "应该于2019年6月1日还款1万元，但逾期未换"
                 }
+            ],
+            "allLoanRequests": [
+                
             ]
         }
     ],

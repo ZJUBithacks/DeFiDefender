@@ -8,11 +8,12 @@ const getBlacklist = (blacklist, filter) => {
         case LIST_BLACKLIST:
             return blacklist
         default:
-            return []     
+            return "无数据"     
     }
 }
 
 // store状态映射到组件
+// blacklist是用于props的键
 const mapStateToProps = state => ({
     blacklist: getBlacklist(state.company[0].blacklist, LIST_BLACKLIST)
 })
