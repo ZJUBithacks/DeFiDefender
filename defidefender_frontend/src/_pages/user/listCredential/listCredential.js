@@ -10,8 +10,15 @@ import Paper from '@material-ui/core/Paper'
 import { Button } from '@material-ui/core'
 import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 import { Link } from 'react-router-dom'
+import Card from '@material-ui/core/Card'
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = theme => ({
+    root: {
+        flexGrow: 1,
+      },
     title: {
         textAlign: 'center'
     },
@@ -33,6 +40,10 @@ const useStyles = theme => ({
     fixedHeight: {
         height: 240,
     },
+    card: {
+        maxWidth: 275,
+        minHeight: 180
+    },
 });
 
 // 列出所有凭证
@@ -44,38 +55,27 @@ class ListCredential extends Component {
     render() {
         const {classes} = this.props
         const rows = [
-            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, 'cpt_name', `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`),
-            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, 'cpt_name', `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`),
-            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, 'cpt_name', `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`),
-            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, 'cpt_name', `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`),
-            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, 'cpt_name', `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`)
+            this.createData(`0xc83b2cf766d3165acc2abc`, 'cpt_name', `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`),
+            this.createData(`0xc83b2cf766d3165acc2def`, 'cpt_name', `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`),
+            this.createData(`0xc83b2cf766d3165acc2adf8defd1b`, 'cpt_name', `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`),
+            this.createData(`0xc83b2cf766d3165acc2dfb9164641380088defd1b`, 'cpt_name', `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`),
+            this.createData(`0xc83b2cf766d3165acc2f`, 'cpt_name', `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`)
         ]
         return (
-            <div>
-                <h3 className={classes.title}>用户所有凭证</h3>
-                <Container maxWidth="lg" className={classes.container}>
-                    <Paper className={classes.root}>
-                        <Table className={classes.table}>
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell align="center">WeID</TableCell>
-                                    <TableCell align="center">CPT</TableCell>
-                                    <TableCell align="center">IPFS Hash</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                { rows.map(row => (
-                                    <TableRow >
-                                        <TableCell align="center">{row.weid}</TableCell>
-                                        <TableCell align="center">{row.cpt}</TableCell>
-                                        <TableCell align="center"><Link>{row.ipfs_hash} </Link></TableCell>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </Paper>
-                </Container>
-            </div>
+            <Grid container className={classes.root} spacing={2}>
+                <Grid item xs={12}>
+                    {rows.map(row => (
+                        <Card className={classes.card}>
+                            <CardContent>
+                                WeID:{row.weid}
+                            </CardContent>
+                            <CardActions>
+                                <Button size="small">查看详细信息</Button>
+                            </CardActions>
+                        </Card>
+                    ))}
+                </Grid>
+            </Grid>
         )
     }
 }

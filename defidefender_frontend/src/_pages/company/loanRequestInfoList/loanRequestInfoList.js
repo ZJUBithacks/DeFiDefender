@@ -8,10 +8,11 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
 import { Button } from '@material-ui/core'
-import CloudUploadIcon from '@material-ui/icons/CloudUpload'
-import { Link } from 'react-router-dom'
+import { makeStyles } from '@material-ui/core/styles'
+import Tick from '@material-ui/icons/DoneOutline'
+import Collapse from '@material-ui/core/Collapse';
 
-const useStyles = theme => ({
+const useStyles = makeStyles(theme => ({
     title: {
         textAlign: 'center'
     },
@@ -33,50 +34,92 @@ const useStyles = theme => ({
     fixedHeight: {
         height: 240,
     },
-});
+    button: {
+        margin: theme.spacing(1),
+    },
+    leftIcon: {
+        marginRight: theme.spacing(2),
+    },
+    rightIcon: {
+        marginLeft: theme.spacing(1.5),
+    },
+    polygon: {
+        fill: theme.palette.common.white,
+        stroke: theme.palette.divider,
+        strokeWidth: 1,
+    },
+}))
+
+
 
 // 个人借贷请求列表
-class LoanRequestInfoList extends Component {
-    // ipfs_hash可直接跳转到IPFS上显示
-    createData(weid, hash) {
-        return { weid, hash}
-    }
-    render() {
-        const rows = [
-            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`),
-            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`),
-            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`),
-            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`),
-            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`)
-        ]
-        const { classes } = this.props
+function LoanRequestInfoList(props) {
+    
+    const [buttonOpen, setButtonOpen] = React.useState(true);
 
-        return (
-            <div>
-                <h3 className={classes.title}>个人借贷请求列表</h3>
-                <Container maxWidth="lg" className={classes.container}>
-                    <Paper className={classes.root}>
-                        <Table className={classes.table}>
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell align="center">WeID</TableCell>
-                                    <TableCell align="center">IPFS Hash</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {rows.map(row => (
-                                    <TableRow >
-                                        <TableCell align="center">{row.weid}</TableCell>
-                                        <TableCell align="center">{row.hash} </TableCell>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </Paper>
-                </Container>
-            </div>
-        )
+    const handleButtonClick = ()=>{
+        setButtonOpen(prev => !prev)
     }
+
+    const oppo = (flag)=>{
+        console.log("123")
+        console.log(flag);
+        flag = !flag
+    }
+
+    // ipfs_hash可直接跳转到IPFS上显示
+    const createData = (weid, hash, flag) =>{
+        return { weid, hash, flag}
+    }
+    
+    const rows = [
+        createData(`0xc83b2cf766d3165acc2fc916`, `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`,false),
+        createData(`0xc83b2cf766d3165acc2fc916`, `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`,false),
+        createData(`0xc83b2cf766d3165acc2fc916`, `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`,false),
+        createData(`0xc83b2cf766d3165acc2fc916`, `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`,false),
+        createData(`0xc83b2cf766d3165acc2fc916`, `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`,false)
+    ]
+
+    const classes = useStyles()
+    return (
+        <div>
+            <h3 className={classes.title}>借贷请求列表</h3>
+            <Container maxWidth="lg" className={classes.container}>
+                <Paper className={classes.root}>
+                    <Table className={classes.table}>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell align="center">WeID</TableCell>
+                                <TableCell align="center">凭证 Hash</TableCell>
+                                <TableCell align="center">查询</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>        
+                            {rows.map((row,index) => (
+                                <TableRow key = {index}>
+                                    <TableCell align="center">{row.weid}</TableCell>
+                                    <TableCell align="center">
+                                        <Button variant="contained" color="primary" className={classes.button} onClick={(index)=>oppo()} >
+                                            验证凭证Hash
+                                        </Button>
+                                    </TableCell>
+                                    <TableCell align="center">                                 
+                                        <Button variant="outlined" color="primary" className={classes.button} >
+                                            查询多方投资借贷数据
+                                        </Button>
+                                        <Button variant="outlined" color="primary" className={classes.button} >
+                                            查询借贷不良信用记录
+                                        </Button>
+                                    </TableCell>                                  
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </Paper>
+            </Container>
+        </div>
+    )
+    
 }
 
 const LoanRequestInfoListWithStyles = withStyles(useStyles)(LoanRequestInfoList)
