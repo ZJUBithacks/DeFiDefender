@@ -131,6 +131,7 @@ const LayoutWithRouter = withRouter(function Layout(props) {
     return (
         <div className={classes.root}>
             <CssBaseline />
+
             <AppBar position="absolute" >
                 <Toolbar className={classes.toolbar}>
                     <IconButton

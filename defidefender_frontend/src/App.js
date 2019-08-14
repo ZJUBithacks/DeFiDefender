@@ -8,6 +8,7 @@ import {HomeContent} from './_pages/homeContent'
 
 class App extends Component {
   render() {
+    
     return (
       <BrowserRouter>
         <Layout>

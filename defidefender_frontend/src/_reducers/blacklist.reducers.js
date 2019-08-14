@@ -1,12 +1,11 @@
 import { LIST_BLACKLIST, ListBlacklist } from '../_actions/blacklist.actions'
-
-const initialState = {}
+import { combineReducers } from 'redux'
 
 // reducer: 发起action后如何更新state
-export function BlacklistReducer(state=initialState, action) {
+export function BlacklistReducer(state={}, action) {
     switch (action.type) {
         case LIST_BLACKLIST:
-            return state
+            return ["blacklist"]
         default:
             return state
     }

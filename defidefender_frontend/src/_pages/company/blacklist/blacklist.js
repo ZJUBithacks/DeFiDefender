@@ -11,6 +11,7 @@ import { Button } from '@material-ui/core'
 import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 import { Link } from 'react-router-dom'
 import { mergeClasses } from '@material-ui/styles';
+import {store} from '../../../_store'
 
 const useStyles = theme => ({
     title: {
@@ -42,13 +43,19 @@ class Blacklist extends Component {
     createData(weid, violate_record) {
         return { weid, violate_record}
     }
+    constructor(props){
+        super(props)
+        this.state = store.getState()
+        alert(this.state)
+    }
+
     render() {
+        const { ListBlacklist } = this.props
         const rows = [
             this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, "xx于xx年xx月xx日未还款金额xx元"),
             this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, "xx于xx年xx月xx日未还款金额xx元"),   
         ]
         const { classes } = this.props
-
         return (
             <div>
                 <h3 className={classes.title}>查看黑名单</h3>
