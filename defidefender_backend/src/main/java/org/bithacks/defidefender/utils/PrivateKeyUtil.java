@@ -36,7 +36,7 @@ public class PrivateKeyUtil {
      * SDK private key storage path.
      */
     public static final String SDK_PRIVKEY_PATH = 
-        PropertiesUtils.getProperty("admin.privKeyPath");
+        PropertiesUtils.getProperty("weid.keys.dir");
 
     /**
      * this method stores weId private key information by file and stores

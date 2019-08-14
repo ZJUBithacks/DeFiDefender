@@ -1,25 +1,25 @@
 package org.bithacks.defidefender.service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.webank.weid.constant.ErrorCode;
 import com.webank.weid.protocol.base.*;
 import com.webank.weid.protocol.request.*;
 import com.webank.weid.protocol.response.CreateWeIdDataResult;
 import com.webank.weid.protocol.response.ResponseData;
-import com.webank.weid.rpc.AuthorityIssuerService;
-import com.webank.weid.rpc.CptService;
-import com.webank.weid.rpc.CredentialService;
-import com.webank.weid.rpc.WeIdService;
-import com.webank.weid.service.impl.AuthorityIssuerServiceImpl;
-import com.webank.weid.service.impl.CptServiceImpl;
-import com.webank.weid.service.impl.CredentialServiceImpl;
-import com.webank.weid.service.impl.WeIdServiceImpl;
+import com.webank.weid.rpc.*;
+import com.webank.weid.service.impl.*;
 import com.webank.weid.util.DataToolUtils;
+import org.bithacks.defidefender.utils.CommonUtils;
 import org.bithacks.defidefender.utils.FileUtil;
 import org.bithacks.defidefender.utils.PrivateKeyUtil;
+import org.bithacks.defidefender.utils.PropertiesUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -128,6 +128,22 @@ public class DIDService {
         return setResponse;
     }
 
+    public ResponseData<Boolean> registerIssuerType(String issuer, String authorityName) {
+        WeIdAuthentication weIdAuthentication = new WeIdAuthentication();
+        weIdAuthentication.setWeId(issuer);
+
+        WeIdPrivateKey weIdPrivateKey = new WeIdPrivateKey();
+        String privateKey = PrivateKeyUtil.getPrivateKeyByWeId("keys/", issuer);
+        System.out.println(privateKey);
+        weIdPrivateKey.setPrivateKey(privateKey);
+        weIdAuthentication.setWeIdPrivateKey(weIdPrivateKey);
+
+        weIdAuthentication.setWeIdPublicKeyId(issuer);
+        AuthorityIssuerService authorityIssuerService = new AuthorityIssuerServiceImpl();
+        ResponseData<Boolean> government = authorityIssuerService.registerIssuerType(weIdAuthentication, authorityName);
+        return government;
+    }
+
     /**
      * register on the chain as an authoritative body.
      *
@@ -200,56 +216,65 @@ public class DIDService {
      * @param cptId      the cptId of CPT
      * @param issuer     the weId of issue
      * @param privateKey the private key of issuer
-     * @param claimDate  the data of claim
+     * @param claimData  the data of claim
      * @return returns credential
      */
-    public ResponseData<CredentialWrapper> createCredential(
+    public ResponseData<CredentialPojo> createCredential(
             Integer cptId,
             String issuer,
             String privateKey,
-            Map<String, Object> claimDate) {
+            Map<String, Object> claimData) {
+        CredentialPojoService credentialPojoService = new CredentialPojoServiceImpl();
+        CreateCredentialPojoArgs<Map<String, Object>> createCredentialPojoArgs = new CreateCredentialPojoArgs<Map<String, Object>>();
+        createCredentialPojoArgs.setCptId(cptId);
+        createCredentialPojoArgs.setIssuer(issuer);
+        createCredentialPojoArgs.setExpirationDate(System.currentTimeMillis() + 1000 * 60 * 60 * 24 * 100);
 
-        // build createCredential parameters.
-        CreateCredentialArgs registerCptArgs = new CreateCredentialArgs();
-        registerCptArgs.setCptId(cptId);
-        registerCptArgs.setIssuer(issuer);
-        registerCptArgs.setWeIdPrivateKey(new WeIdPrivateKey());
-        registerCptArgs.getWeIdPrivateKey().setPrivateKey(privateKey);
-        registerCptArgs.setClaim(claimDate);
+        WeIdAuthentication weIdAuthentication = new WeIdAuthentication();
+        weIdAuthentication.setWeId(issuer);
 
-        // the validity period is 360 days
-        registerCptArgs
-                .setExpirationDate(System.currentTimeMillis() + EXPIRATION_DATE);
+        WeIdPrivateKey weIdPrivateKey = new WeIdPrivateKey();
+        weIdPrivateKey.setPrivateKey(privateKey);
+        weIdAuthentication.setWeIdPrivateKey(weIdPrivateKey);
 
-        // create credentials by SDK.
-        ResponseData<CredentialWrapper> response =
-                credentialService.createCredential(registerCptArgs);
-        logger.info(
-                "createCredential is result,errorCode:{},errorMessage:{}",
-                response.getErrorCode(),
-                response.getErrorMessage()
-        );
+        weIdAuthentication.setWeIdPublicKeyId(issuer);
+        createCredentialPojoArgs.setWeIdAuthentication(weIdAuthentication);
+
+        createCredentialPojoArgs.setClaim(claimData);
+
+        ResponseData<CredentialPojo> response = credentialPojoService.createCredential(createCredentialPojoArgs);
+        CommonUtils commonUtils = new CommonUtils();
+        commonUtils.writeObjectToFile(response.getResult(), 0);
         return response;
     }
 
-    /**
-     * verify credential.
-     *
-     * @param credentialJson credentials in JSON format
-     * @return returns the result of verify
-     */
-    public ResponseData<Boolean> verifyCredential(String credentialJson) {
 
-        ResponseData<Boolean> verifyResponse = null;
+    public ResponseData<Boolean> verifyCredential(String weid, int type) {
+        CommonUtils commonUtils = new CommonUtils();
+        CredentialPojo credentialPojo = commonUtils.readObjectFromFile(type);
+        CredentialPojoService credentialPojoService = new CredentialPojoServiceImpl();
+        ResponseData<Boolean> verifyRes = credentialPojoService.verify(weid, credentialPojo);
+        return verifyRes;
+    }
 
-        Credential credential = DataToolUtils.deserialize(credentialJson, Credential.class);
-        // verify credential on chain.
-        verifyResponse = credentialService.verify(credential);
-        logger.info(
-                "verifyCredential is result,errorCode:{},errorMessage:{}",
-                verifyResponse.getErrorCode(),
-                verifyResponse.getErrorMessage()
-        );
-        return verifyResponse;
+
+    public String convertObjToStr(Object o) {
+        JSONObject jsonObject = new JSONObject();
+        String str = jsonObject.toJSONString(o);
+        return str;
+    }
+
+    public ResponseData<CredentialPojo> createSelectedCredential() {
+        CommonUtils commonUtils = new CommonUtils();
+        CredentialPojo credentialPojo = commonUtils.readObjectFromFile(0);
+        CredentialPojoService credentialPojoService = new CredentialPojoServiceImpl();
+
+        // 选择性披露
+        ClaimPolicy claimPolicy = new ClaimPolicy();
+        claimPolicy.setFieldsToBeDisclosed("{\"name\":0,\"gender\":1,\"birthday\":1,\"address\":0,\"identityNumber\":0}");
+        ResponseData<CredentialPojo> selectiveResponse =
+                credentialPojoService.createSelectiveCredential(credentialPojo, claimPolicy);
+        commonUtils.writeObjectToFile(selectiveResponse.getResult(), 1);
+        return selectiveResponse;
     }
 }

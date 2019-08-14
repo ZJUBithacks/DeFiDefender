@@ -1,7 +1,9 @@
 package org.bithacks.defidefender.controller;
 
+import com.webank.weid.protocol.base.CptBaseInfo;
+import com.webank.weid.protocol.base.Credential;
+import com.webank.weid.protocol.base.WeIdDocument;
 import com.webank.weid.protocol.response.CreateWeIdDataResult;
-import com.webank.weid.protocol.response.ResponseData;
 import com.webank.weid.rpc.WeIdService;
 import com.webank.weid.service.impl.WeIdServiceImpl;
 import org.bithacks.defidefender.dao.ContractRepository;
@@ -19,7 +21,7 @@ public class HelloController {
     @Autowired
     ContractRepository contractRepository;
 
-    WeIdService weIdService = new WeIdServiceImpl();
+    DIDService weIdService = new DIDService();
 
     @RequestMapping(value = "/createContract")
     public String createContract() {
@@ -37,8 +39,9 @@ public class HelloController {
         return contract.getAddress();
     }
 
-    @RequestMapping(value = "/createWeId")
-    public String createWeId() {
-        return weIdService.createWeId().getResult().getWeId();
+    @RequestMapping(value = "/")
+    public String hello() {
+        return "Success";
     }
+
 }
