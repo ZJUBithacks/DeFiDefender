@@ -37,28 +37,29 @@ const useStyles = theme => ({
 
 // 列出所有凭证
 class ListCredential extends Component {
-    createData(weid, ipfs_hash) {
-        return { weid, ipfs_hash }
+    createData(weid, cpt, ipfs_hash) {
+        return { weid, cpt, ipfs_hash }
     }
 
     render() {
         const {classes} = this.props
         const rows = [
-            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`),
-            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`),
-            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`),
-            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`),
-            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`)
+            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, 'cpt_name', `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`),
+            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, 'cpt_name', `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`),
+            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, 'cpt_name', `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`),
+            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, 'cpt_name', `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`),
+            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, 'cpt_name', `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`)
         ]
         return (
             <div>
-                <h3 className={classes.title}>查看凭证</h3>
+                <h3 className={classes.title}>用户所有凭证</h3>
                 <Container maxWidth="lg" className={classes.container}>
                     <Paper className={classes.root}>
                         <Table className={classes.table}>
                             <TableHead>
                                 <TableRow>
                                     <TableCell align="center">WeID</TableCell>
+                                    <TableCell align="center">CPT</TableCell>
                                     <TableCell align="center">IPFS Hash</TableCell>
                                 </TableRow>
                             </TableHead>
@@ -66,7 +67,8 @@ class ListCredential extends Component {
                                 { rows.map(row => (
                                     <TableRow >
                                         <TableCell align="center">{row.weid}</TableCell>
-                                        <TableCell align="center">{row.ipfs_hash} </TableCell>
+                                        <TableCell align="center">{row.cpt}</TableCell>
+                                        <TableCell align="center"><Link>{row.ipfs_hash} </Link></TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>

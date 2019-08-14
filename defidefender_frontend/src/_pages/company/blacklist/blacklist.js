@@ -38,19 +38,40 @@ const useStyles = theme => ({
 
 // 查看黑名单
 class Blacklist extends Component {
-    createData(weid, name, gender, birthday, address, id_image) {
-        return { weid, name, gender, birthday, address, id_image }
+    // 返回DID和违约记录
+    createData(weid, violate_record) {
+        return { weid, violate_record}
     }
     render() {
         const rows = [
-            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, `张三`, '男', '1995-07-01', '杭州', '001'),
-            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, `李四`, '男', '1993-07-01', '杭州', '002'),
+            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, "xx于xx年xx月xx日未还款金额xx元"),
+            this.createData(`0xc83b2cf766d3165acc2fc9164641380088defd1b`, "xx于xx年xx月xx日未还款金额xx元"),   
         ]
         const { classes } = this.props
 
         return (
             <div>
                 <h3 className={classes.title}>查看黑名单</h3>
+                <Container maxWidth="lg" className={classes.container}>
+                    <Paper className={classes.root}>
+                        <Table className={classes.table}>
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell align="center">WeID</TableCell>
+                                    <TableCell align="center">违约记录</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {rows.map(row => (
+                                    <TableRow >
+                                        <TableCell align="center">{row.weid}</TableCell>
+                                        <TableCell align="center">{row.violate_record} </TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </Paper>
+                </Container>
             </div>
         )
     }
