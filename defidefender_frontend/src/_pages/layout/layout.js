@@ -13,7 +13,7 @@ import HomeIcon from '@material-ui/icons/Home'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import NotificationsIcon from '@material-ui/icons/Notifications'
 import PersonIcon from '@material-ui/icons/Person'
-import { Link, Route, withRouter } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { List, ListItemIcon, ListItemText, ListItem } from '@material-ui/core'
 
 function MadeWithLove() {
@@ -113,11 +113,11 @@ const LayoutWithRouter = withRouter(function Layout(props) {
 
     const toggleDrawer = (open) => event => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-            return;
+            return
         }
 
-        setOpen(open);
-    };
+        setOpen(open)
+    }
 
     const handleDrawerOpen = () => {
         setOpen(true)

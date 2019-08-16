@@ -1,12 +1,12 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import TextField from '@material-ui/core/TextField'
 import Grid from '@material-ui/core/Grid'
 import Container from '@material-ui/core/Container'
 import { Button, Typography } from '@material-ui/core'
 import { Link } from 'react-router-dom'
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Switch from '@material-ui/core/Switch';
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import Switch from '@material-ui/core/Switch'
 
 const useStyles = makeStyles(theme => ({
     content: {
@@ -27,19 +27,19 @@ const useStyles = makeStyles(theme => ({
     fixedHeight: {
         height: 240,
     },
-}));
+}))
 
 // 用户请求贷款
 export function LoanRequest() {
-    const classes = useStyles();
+    const classes = useStyles()
     const [state, setState] = React.useState({
         checkedA: true,
         checkedB: true,
-    });
+    })
 
     const handleChange = name => event => {
-        setState({ ...state, [name]: event.target.checked });
-    };
+        setState({ ...state, [name]: event.target.checked })
+    }
 
     return (
         <Container maxWidth="lg" className={classes.container}>
@@ -103,5 +103,5 @@ export function LoanRequest() {
                 <Button variant="contained" color="primary" component={Link} to="/loanRequestInfoList">借贷</Button>
             </Grid>
         </Container >
-    );
+    )
 }
