@@ -1,17 +1,13 @@
 import React, { Component } from 'react'
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles'
 import { Button } from '@material-ui/core'
-import CloudUploadIcon from '@material-ui/icons/CloudUpload'
-import { Link } from 'react-router-dom'
 import Card from '@material-ui/core/Card'
-import CardMedia from "@material-ui/core/CardMedia";
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Grid from '@material-ui/core/Grid';
-import Avatar from "@material-ui/core/Avatar";
-import Divider from "@material-ui/core/Divider";
-import Typography from "@material-ui/core/Typography";
-import JSONTree from 'react-json-tree';
+import CardMedia from "@material-ui/core/CardMedia"
+import CardContent from '@material-ui/core/CardContent'
+import Grid from '@material-ui/core/Grid'
+import Divider from "@material-ui/core/Divider"
+import Typography from "@material-ui/core/Typography"
+import JSONTree from 'react-json-tree'
 import jsonTheme from '../../company/jsonResult'
 import Modal from '@material-ui/core/Modal'
 
@@ -86,7 +82,7 @@ const useStyles = theme => ({
         boxShadow: theme.shadows[5],
         padding: theme.spacing(5, 5, 5),
     },
-});
+})
 
 var openCredential = false
 
@@ -131,7 +127,7 @@ class ListCredential extends Component {
             "http://i.pravatar.cc/300?img=2",
             "http://i.pravatar.cc/300?img=3",
             "http://i.pravatar.cc/300?img=4"
-        ];
+        ]
         const rows = [
             this.createData(`0xc83b2cf7d31acc2abc`, 'cpt_name', `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`),
             this.createData(`0xc83b2cf7665acc2def`, 'cpt_name', `QmSsw6EcnwEiTT9c4rnAGeSENvsJMepNHmbrgi2S9bXNJr`),
@@ -250,7 +246,7 @@ class ListCredential extends Component {
                                                     data={credential}
                                                     theme={jsonTheme}
                                                     shouldExpandNode={() => {
-                                                        return false;
+                                                        return false
                                                     }}
                                                 />
                                             </div>
@@ -268,4 +264,4 @@ class ListCredential extends Component {
 
 const ListCredentialWithStyles = withStyles(useStyles)(ListCredential)
 
-export { ListCredentialWithStyles as ListCredential };
+export { ListCredentialWithStyles as ListCredential }
