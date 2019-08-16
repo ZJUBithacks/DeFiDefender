@@ -10,10 +10,11 @@ import IconButton from '@material-ui/core/IconButton'
 import Badge from '@material-ui/core/Badge'
 import MenuIcon from '@material-ui/icons/Menu'
 import HomeIcon from '@material-ui/icons/Home'
+import FavoriteIcon from '@material-ui/icons/Favorite'
 import NotificationsIcon from '@material-ui/icons/Notifications'
 import PersonIcon from '@material-ui/icons/Person'
 import { Link, Route, withRouter } from 'react-router-dom'
-import { List,ListItemIcon, ListItemText,ListItem} from '@material-ui/core'
+import { List, ListItemIcon, ListItemText, ListItem } from '@material-ui/core'
 
 function MadeWithLove() {
     return (
@@ -112,9 +113,9 @@ const LayoutWithRouter = withRouter(function Layout(props) {
 
     const toggleDrawer = (open) => event => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-          return;
+            return;
         }
-    
+
         setOpen(open);
     };
 
@@ -144,7 +145,7 @@ const LayoutWithRouter = withRouter(function Layout(props) {
                         DeFiDefender Project
                     </Typography>
                     <IconButton color="inherit">
-                        <Badge badgeContent={4} color="secondary">
+                        <Badge badgeContent={2} color="secondary">
                             <NotificationsIcon />
                         </Badge>
                     </IconButton>
@@ -157,7 +158,6 @@ const LayoutWithRouter = withRouter(function Layout(props) {
             </AppBar>
             <Drawer
                 open={open}
-                
             >
                 <List
                     onMouseLeave={toggleDrawer(false)}
@@ -166,55 +166,61 @@ const LayoutWithRouter = withRouter(function Layout(props) {
                 >
                     <ListItem button>
                         <ListItemIcon>
-                            <HomeIcon/>
+                            <HomeIcon />
                         </ListItemIcon>
-                        <ListItemText primary={"政府"} />
+                        <Typography align="center" variant="h6">
+                            政府
+                        </Typography>
                     </ListItem>
-                    <ListItem   component={Link} to="/home" selected={'/home' === pathname}>
+                    {/* <ListItem component={Link} to="/home" selected={'/home' === pathname} className={classes.nested}>
                         <ListItemText primary={"主页"} />
-                    </ListItem>
-                    <ListItem   component={Link} to="/userInfo" selected={'/userInfo'===pathname}>
+                    </ListItem> */}
+                    <ListItem button component={Link} to="/userInfo" selected={'/userInfo' === pathname} className={classes.nested}>
                         <ListItemText primary={"查看用户信息"} />
                     </ListItem>
-                    <ListItem   component={Link} to="/userRegisterInfoList" selected={'/userRegisterInfoList' === pathname}>
+                    <ListItem button component={Link} to="/userRegisterInfoList" selected={'/userRegisterInfoList' === pathname} className={classes.nested}>
                         <ListItemText primary={"用户注册审核"} />
                     </ListItem>
-                    <ListItem   component={Link} to="/listAllCredential" selected={'/listAllCredential' === pathname}>
+                    {/* <ListItem component={Link} to="/listAllCredential" selected={'/listAllCredential' === pathname} className={classes.nested}>
                         <ListItemText primary={"列出所有凭证"} />
-                    </ListItem>
+                    </ListItem> */}
 
                     <ListItem button>
                         <ListItemIcon>
-                            <HomeIcon/>
+                            <FavoriteIcon />
                         </ListItemIcon>
-                        <ListItemText primary={"机构"} />
+                        <Typography align="center" variant="h6">
+                            机构
+                        </Typography>
                     </ListItem>
 
-                    <ListItem component={Link} to="/loanRequestInfoList" selected={'/loanRequestInfoList' === pathname}>
+                    <ListItem button component={Link} to="/loanRequestInfoList" selected={'/loanRequestInfoList' === pathname} className={classes.nested}>
                         <ListItemText primary={"借贷请求列表"} />
                     </ListItem>
-                    <ListItem component={Link} to="/blacklist" selected={'/blacklist' === pathname}>
-                        <ListItemText primary={"黑名单"}/>
+                    <ListItem button component={Link} to="/blacklist" selected={'/blacklist' === pathname} className={classes.nested}>
+                        <ListItemText primary={"黑名单"} />
                     </ListItem>
-                
+
                     <ListItem button>
                         <ListItemIcon>
-                            <HomeIcon/>
+                            <PersonIcon />
                         </ListItemIcon>
-                        <ListItemText primary={"用户"} />
+                        <Typography align="center" variant="h6">
+                            用户
+                        </Typography>
                     </ListItem>
-                    <ListItem   component={Link} to="/userRegister" selected={'/userRegister' === pathname}>
-                        <ListItemText primary={"注册"} />   
+                    {/* <ListItem component={Link} to="/userRegister" selected={'/userRegister' === pathname} className={classes.nested}>
+                        <ListItemText primary={"注册"}/>
+                    </ListItem> */}
+
+                    <ListItem button component={Link} to="/listCredential" selected={'/listCredential' === pathname} className={classes.nested}>
+                        <ListItemText primary={"查看凭证"} />
                     </ListItem>
-                    
-                    <ListItem   component={Link} to="/listCredential" selected={'/listCredential' === pathname}>
-                        <ListItemText primary={"查看凭证"} /> 
-                    </ListItem>
-                    <ListItem   component={Link} to="/requestCredential" selected={'/requestCredential' === pathname}>
+                    {/* <ListItem component={Link} to="/requestCredential" selected={'/requestCredential' === pathname} className={classes.nested}>
                         <ListItemText primary={"生成凭证"} />
-                    </ListItem>
-                    <ListItem   component={Link} to="/loanRequest" selected={'/loanRequest' === pathname}>
-                        <ListItemText primary={"借贷"} />  
+                    </ListItem> */}
+                    <ListItem button component={Link} to="/loanRequest" selected={'/loanRequest' === pathname} className={classes.nested}>
+                        <ListItemText primary={"借贷"} />
                     </ListItem>
 
                 </List>
@@ -222,7 +228,7 @@ const LayoutWithRouter = withRouter(function Layout(props) {
 
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
-                { children }
+                {children}
                 <MadeWithLove />
             </main>
         </div>

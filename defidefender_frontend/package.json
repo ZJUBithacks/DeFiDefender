@@ -8,13 +8,16 @@
     "n": "^5.0.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-json-tree": "^0.11.2",
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.0",
     "recharts": "^1.7.0",
     "redux": "^4.0.4",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.87.3"
   },
   "scripts": {
     "start": "react-scripts start",
