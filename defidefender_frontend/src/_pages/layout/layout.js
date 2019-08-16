@@ -225,7 +225,7 @@ const LayoutWithRouter = withRouter(function Layout(props) {
 
                 </List>
             </Drawer>
-
+            
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
                 {children}

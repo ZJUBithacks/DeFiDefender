@@ -149,7 +149,7 @@ class ListCredential extends Component {
                 "cptId": "CPT ID:2000001",
                 "issuer": "颁发者: did:weid:1:0x8dc34e4...23f3bbe7",
                 "issuanceDate": "发行日期：20190814",
-                "expirationDate": "到期日期20250814"
+                "expirationDate": "到期日期：20250814"
             },
             {
                 "cptId": "CPT ID: 2000002",
@@ -208,12 +208,6 @@ class ListCredential extends Component {
                         rows.map((row, i) => (
                             <Grid item xs={4}>
                                 <Card className={classes.card}>
-                                    <CardMedia
-                                        className={classes.media}
-                                        image={
-                                            images[i]
-                                        }
-                                    />
                                     <CardContent className={classes.content}>
                                         <Typography
                                             className={classes.cardContent}
