@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { Layout } from './_pages/layout'
 import { UserInfo, ListAllCredential, UserRegisterInfoList } from './_pages/government'
 import { LoanRequestInfoList } from './_pages/company'
@@ -11,7 +11,6 @@ import Blacklist from './_containers/blacklistContainer'
 
 class App extends Component {
   render() {
-
     return (
       <BrowserRouter>
         <Layout>
@@ -36,4 +35,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App

@@ -1,15 +1,5 @@
 import React, { Component } from 'react'
-import { withStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container'
-import Table from '@material-ui/core/Table'
-import TableBody from '@material-ui/core/TableBody'
-import TableCell from '@material-ui/core/TableCell'
-import TableHead from '@material-ui/core/TableHead'
-import TableRow from '@material-ui/core/TableRow'
-import Paper from '@material-ui/core/Paper'
-import { Button } from '@material-ui/core'
-import CloudUploadIcon from '@material-ui/icons/CloudUpload'
-import { Link } from 'react-router-dom'
+import { withStyles } from '@material-ui/core/styles'
 import { SignUp } from '../../signup'
 
 const useStyles = theme => ({
@@ -34,7 +24,7 @@ const useStyles = theme => ({
     fixedHeight: {
         height: 240,
     },
-});
+})
 
 // 用户注册DID
 class UserRegister extends Component {
@@ -51,4 +41,4 @@ class UserRegister extends Component {
 
 const UserRegisterWithStyles = withStyles(useStyles)(UserRegister)
 
-export { UserRegisterWithStyles as UserRegister };
+export { UserRegisterWithStyles as UserRegister }

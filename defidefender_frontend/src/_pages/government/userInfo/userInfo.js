@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import React, { Component } from 'react'
+import { withStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -7,9 +7,6 @@ import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
-import { Button } from '@material-ui/core'
-import CloudUploadIcon from '@material-ui/icons/CloudUpload'
-import { Link } from 'react-router-dom'
 
 const useStyles = theme => ({
     userInfo: {
@@ -33,7 +30,7 @@ const useStyles = theme => ({
     fixedHeight: {
         height: 240,
     },
-});
+})
 
 class UserInfo extends Component {
 
@@ -83,10 +80,10 @@ class UserInfo extends Component {
                 </Container>
             </div> 
         
-        );
+        )
     }
 }
 
 const UserInfoWithStyles = withStyles(useStyles)(UserInfo)
 
-export {UserInfoWithStyles as UserInfo};
+export {UserInfoWithStyles as UserInfo}

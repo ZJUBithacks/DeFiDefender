@@ -1,18 +1,18 @@
 /* eslint-disable no-script-url */
 
-import React from 'react';
-import Link from '@material-ui/core/Link';
-import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import { Title } from '../title';
+import React from 'react'
+import Link from '@material-ui/core/Link'
+import { makeStyles } from '@material-ui/core/styles'
+import Table from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import TableCell from '@material-ui/core/TableCell'
+import TableHead from '@material-ui/core/TableHead'
+import TableRow from '@material-ui/core/TableRow'
+import { Title } from '../title'
 
 // Generate Order Data
 function createData(id, date, requestId, responseId, amount) {
-    return { id, date, requestId, responseId, amount };
+    return { id, date, requestId, responseId, amount }
 }
 
 const rows = [
@@ -21,16 +21,16 @@ const rows = [
     createData(2, '16 Mar, 2019', '01b25001-5713-4384-ae93-58af39a5a9b3', '5b4ad39d-75bb-40b6-bd16-b0520565905c', 100.81),
     createData(3, '16 Mar, 2019', 'e90da3b3-d38e-4221-a420-dfea3dd25f4b', 'af5507bc-fa4a-4779-ae67-8a0253a15d3c', 654.39),
     createData(4, '15 Mar, 2019', '9ebc0469-8a34-49eb-b5ee-7860de871a4f', '31b7f16d-3d5e-484a-8020-9e76a2c41f8b', 212.79),
-];
+]
 
 const useStyles = makeStyles(theme => ({
     seeMore: {
         marginTop: theme.spacing(3),
     },
-}));
+}))
 
 export function Orders() {
-    const classes = useStyles();
+    const classes = useStyles()
     return (
         <React.Fragment>
             <Title>Recent Orders</Title>
@@ -55,10 +55,10 @@ export function Orders() {
                 </TableBody>
             </Table>
             <div className={classes.seeMore}>
-                <Link color="primary" href="javascript:;">
+                <Link color="primary" href="javascript:">
                     See more orders
         </Link>
             </div>
         </React.Fragment>
-    );
+    )
 }

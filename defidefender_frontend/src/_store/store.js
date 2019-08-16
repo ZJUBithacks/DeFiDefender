@@ -1,5 +1,5 @@
-import { createStore, applyMiddleware } from 'redux';
-// import rootReducer from '../_reducers';
+import { createStore, applyMiddleware } from 'redux'
+// import rootReducer from '../_reducers'
 import { BlacklistReducer } from '../_reducers'
 
 const initialState = {
@@ -32,4 +32,4 @@ const initialState = {
 
 export const store = createStore(
     BlacklistReducer, initialState
-);
+)

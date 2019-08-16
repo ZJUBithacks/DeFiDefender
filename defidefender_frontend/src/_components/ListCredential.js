@@ -1,11 +1,11 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import FormLabel from '@material-ui/core/FormLabel';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import Radio from '@material-ui/core/Radio';
-import Paper from '@material-ui/core/Paper';
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import Grid from '@material-ui/core/Grid'
+import FormLabel from '@material-ui/core/FormLabel'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import RadioGroup from '@material-ui/core/RadioGroup'
+import Radio from '@material-ui/core/Radio'
+import Paper from '@material-ui/core/Paper'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -18,14 +18,14 @@ const useStyles = makeStyles(theme => ({
     control: {
         padding: theme.spacing(2),
     },
-}));
+}))
 
 export default function SpacingGrid() {
-    const [spacing, setSpacing] = React.useState(2);
-    const classes = useStyles();
+    const [spacing, setSpacing] = React.useState(2)
+    const classes = useStyles()
 
     function handleChange(event, value) {
-        setSpacing(Number(value));
+        setSpacing(Number(value))
     }
 
     return (
@@ -65,5 +65,5 @@ export default function SpacingGrid() {
                 </Paper>
             </Grid>
         </Grid>
-    );
+    )
 }
